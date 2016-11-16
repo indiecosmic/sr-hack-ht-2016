@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "music-taste-based-radio-discovery", "music-taste-based-radio-discovery\music-taste-based-radio-discovery.csproj", "{C006C41F-167E-4B8C-9FBD-54E720F9AB4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebApi", "SpotifyWebApi\SpotifyWebApi.csproj", "{27AD3E67-1AEA-413D-9E8A-92D60EC03084}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C006C41F-167E-4B8C-9FBD-54E720F9AB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C006C41F-167E-4B8C-9FBD-54E720F9AB4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C006C41F-167E-4B8C-9FBD-54E720F9AB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C006C41F-167E-4B8C-9FBD-54E720F9AB4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27AD3E67-1AEA-413D-9E8A-92D60EC03084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27AD3E67-1AEA-413D-9E8A-92D60EC03084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27AD3E67-1AEA-413D-9E8A-92D60EC03084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27AD3E67-1AEA-413D-9E8A-92D60EC03084}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

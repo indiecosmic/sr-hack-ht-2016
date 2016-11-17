@@ -279,6 +279,7 @@
     <Content Include="Styles\foundation\util\_util.scss" />
     <Content Include="Styles\foundation\util\_value.scss" />
     <Content Include="Styles\foundation\_global.scss" />
+    <Content Include="Views\Callback\MostPlayed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -288,8 +289,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Callback\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>

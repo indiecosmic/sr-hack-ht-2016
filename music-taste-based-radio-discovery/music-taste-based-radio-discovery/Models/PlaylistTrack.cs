@@ -12,5 +12,6 @@ namespace music_taste_based_radio_discovery.Models
         public string Title { get; set; }
         public string Performer { get; set; }
         public int? EpisodeId { get; set; }
+        public int UnitId { get; set; }
     }
 }

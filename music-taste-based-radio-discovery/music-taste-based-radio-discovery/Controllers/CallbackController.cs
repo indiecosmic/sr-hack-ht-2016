@@ -27,7 +27,11 @@ namespace music_taste_based_radio_discovery.Controllers
 
             var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
             var result = await SpotifyWebAPI.User.GetTopArtists(authenticationToken);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var artists = result.Items;
+
+
+            return View(result);
+            // return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

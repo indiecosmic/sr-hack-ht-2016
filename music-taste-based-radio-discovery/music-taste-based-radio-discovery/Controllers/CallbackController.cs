@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpotifyWebAPI;
 using System.Threading.Tasks;
+using music_taste_based_radio_discovery.Models.Callback;
 
 namespace music_taste_based_radio_discovery.Controllers
 {
@@ -30,8 +31,9 @@ namespace music_taste_based_radio_discovery.Controllers
             var artists = result.Items;
 
 
-            return View(result);
-            // return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+            //return View("MostPlayed", mostPlayedModel);
         }
 
     }

@@ -12,5 +12,6 @@ namespace music_taste_based_radio_discovery
         public static string SpotifyClientId => Get("SpotifyClientId");
         public static string SpotifyClientSecret => Get("SpotifyClientSecret");
         public static string SpotifyRedirectUri => Get("SpotifyRedirectUri");
+        public static string IsidorConnectionString => Get("Isidor");
     }
 }

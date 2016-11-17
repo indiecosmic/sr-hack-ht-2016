@@ -10,12 +10,12 @@
                 <div class="column">
                     @if (artist.Images.Count > 0)
                     {
-                        <img src="@artist.Images.FirstOrDefault().Url" class="thumbnail" alt=""/>
+                        <img src="@artist.Images.First().Url" class="thumbnail" alt=""/>
                     }
 
-                    <p class="thumbnail__artist-name">
-                        <strong>@artist.Name</strong>
-                    </p>
+                    <h4 class="thumbnail__artist-name">
+                        @artist.Name
+                    </h4>
 
                     <p class="thumbnail__artist-genres">
                         @{ var str = string.Join(", ", artist.Genres); }

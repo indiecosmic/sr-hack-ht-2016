@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using music_taste_based_radio_discovery.Models;
+using music_taste_based_radio_discovery.Repositories;
+using SpotifyWebAPI;
 
 namespace music_taste_based_radio_discovery.Controllers
 {
@@ -12,18 +15,34 @@ namespace music_taste_based_radio_discovery.Controllers
         // GET: Artist
         public async Task<ActionResult> Index()
         {
-            var code = Session["code"] as string;
-            if (string.IsNullOrEmpty(code))
+            var token = Session["token"] as AuthenticationToken;
+            if (token == null)
                 return RedirectToAction("Index", "Home");
-
-            SpotifyWebAPI.Authentication.ClientId = Settings.SpotifyClientId;
-            SpotifyWebAPI.Authentication.ClientSecret = Settings.SpotifyClientSecret;
-            SpotifyWebAPI.Authentication.RedirectUri = Settings.SpotifyRedirectUri;
-
-            var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
-            var result = await SpotifyWebAPI.User.GetTopArtists(authenticationToken);
+            
+            var result = await SpotifyWebAPI.User.GetTopArtists(token);
 
             return View("MostPlayed", result.Items);
+        }
+
+        public async Task<ActionResult> Details(string id)
+        {
+            var token = Session["token"] as AuthenticationToken;
+            if (token == null)
+                return RedirectToAction("Index", "Home");
+
+            var spotifyResult = await SpotifyWebAPI.Artist.GetArtist(id);
+            var repo = new PlaylistInfoRepository();
+            var dbResults = await repo.GetTracksByArtistName(spotifyResult.Name);
+            var channel = dbResults.GroupBy(r => r.NewsName).OrderByDescending(g => g.Count()).FirstOrDefault().Key;
+
+            var model = new ArtistDetails
+            {
+                ArtistName = spotifyResult.Name,
+                PlayCount = dbResults.Count(),
+                Channel = channel
+            };
+
+            return View(model);
         }
     }
 }

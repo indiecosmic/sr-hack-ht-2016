@@ -14,7 +14,7 @@
                     }
 
                     <h4 class="thumbnail__artist-name">
-                        @artist.Name
+                        @Html.ActionLink(artist.Name, "Details", new {id=artist.Id})
                     </h4>
 
                     <p class="thumbnail__artist-genres">

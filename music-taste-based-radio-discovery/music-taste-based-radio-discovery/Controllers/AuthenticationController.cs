@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -23,14 +24,20 @@ namespace music_taste_based_radio_discovery.Controllers
             return Redirect(redirectAddress);
         }
 
-        public ActionResult Callback(string code, string state)
+        public async Task<ActionResult> Callback(string code, string state)
         {
             var storedState = Request.Cookies[StateKey]?.Value;
             if (string.IsNullOrEmpty(state) || !state.Equals(storedState))
                 return Redirect("/#error=state_mismatch");
 
             Response.Cookies.Remove(StateKey);
-            Session["code"] = code;
+
+            SpotifyWebAPI.Authentication.ClientId = Settings.SpotifyClientId;
+            SpotifyWebAPI.Authentication.ClientSecret = Settings.SpotifyClientSecret;
+            SpotifyWebAPI.Authentication.RedirectUri = Settings.SpotifyRedirectUri;
+
+            var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
+            Session["token"] = authenticationToken;
 
             return RedirectToAction("Index", "Artist");
         }

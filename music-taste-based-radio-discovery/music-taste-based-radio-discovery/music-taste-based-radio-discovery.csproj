@@ -193,6 +193,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArtistDetails.cs" />
     <Compile Include="Models\PlaylistTrack.cs" />
     <Compile Include="Models\Callback\MostPlayedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Styles\foundation\util\_value.scss" />
     <Content Include="Styles\foundation\_global.scss" />
     <Content Include="Views\Artist\MostPlayed.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,15 +21,9 @@ namespace music_taste_based_radio_discovery.Controllers
                 return Redirect("/#error=state_mismatch");
 
             Response.Cookies.Remove(StateKey);
+            Session["code"] = code;
 
-            SpotifyWebAPI.Authentication.ClientId = Settings.SpotifyClientId;
-            SpotifyWebAPI.Authentication.ClientSecret = Settings.SpotifyClientSecret;
-            SpotifyWebAPI.Authentication.RedirectUri = Settings.SpotifyRedirectUri;
-
-            var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
-            var result = await SpotifyWebAPI.User.GetTopArtists(authenticationToken);
-
-            return View("MostPlayed", result.Items);
+            return RedirectToAction("Index", "Artist");
         }
     }
 }

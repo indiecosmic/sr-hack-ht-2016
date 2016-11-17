@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\CallbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Styles\foundation\util\_value.scss" />
     <Content Include="Styles\foundation\_global.scss" />
     <Content Include="Views\Callback\MostPlayed.cshtml" />
+    <Content Include="Views\Artist\MostPlayed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

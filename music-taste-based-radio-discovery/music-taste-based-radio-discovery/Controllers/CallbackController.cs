@@ -21,9 +21,9 @@ namespace music_taste_based_radio_discovery.Controllers
 
             Response.Cookies.Remove(StateKey);
 
-            SpotifyWebAPI.Authentication.ClientId = "xxx";
-            SpotifyWebAPI.Authentication.ClientSecret = "xxx";
-            SpotifyWebAPI.Authentication.RedirectUri = "http://localhost:55791/callback";
+            SpotifyWebAPI.Authentication.ClientId = Settings.SpotifyClientId;
+            SpotifyWebAPI.Authentication.ClientSecret = Settings.SpotifyClientSecret;
+            SpotifyWebAPI.Authentication.RedirectUri = Settings.SpotifyRedirectUri;
 
             var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
             var result = await SpotifyWebAPI.User.GetTopArtists(authenticationToken);

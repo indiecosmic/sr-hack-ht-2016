@@ -1,14 +1,13 @@
-﻿
-@{
-    ViewBag.Title = "View";
-}
-
-<div>
-    <div id="login">
-        <h1>First, log in to spotify</h1>
-        <a href="/login">Log in</a>
+﻿<div class="index-wrapper">
+    <div class="row">
+        <div class="column">
+            <h1>First, log in to spotify</h1>
+        </div>
     </div>
-    <div id="loggedin">
+
+    <div class="row">
+        <div class="column">
+            @Html.ActionLink("Login", "Index", "Login", null, new { @class = "button" })
+        </div>
     </div>
 </div>
-

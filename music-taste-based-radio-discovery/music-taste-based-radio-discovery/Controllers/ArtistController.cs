@@ -33,13 +33,16 @@ namespace music_taste_based_radio_discovery.Controllers
             var spotifyResult = await SpotifyWebAPI.Artist.GetArtist(id);
             var repo = new PlaylistInfoRepository();
             var dbResults = await repo.GetTracksByArtistName(spotifyResult.Name);
-            var channel = dbResults.GroupBy(r => r.NewsName).OrderByDescending(g => g.Count()).FirstOrDefault().Key;
+            var channelPlays =
+                dbResults.GroupBy(r => r.NewsName)
+                    .OrderByDescending(g => g.Count())
+                    .Select(x => new Tuple<string, int>(x.Key, x.Count()));
 
             var model = new ArtistDetails
             {
                 ArtistName = spotifyResult.Name,
                 PlayCount = dbResults.Count(),
-                Channel = channel
+                ChannelPlays = channelPlays
             };
 
             return View(model);

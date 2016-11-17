@@ -28,11 +28,11 @@ namespace music_taste_based_radio_discovery.Controllers
 
             var authenticationToken = await SpotifyWebAPI.Authentication.GetAccessToken(code);
             var result = await SpotifyWebAPI.User.GetTopArtists(authenticationToken);
-            var artistList = new List<string> {"Linus", "aer", "baest"};
 
-            var mostPlayedModel = new MostPlayedModel(artistList);
 
-            return View("MostPlayed", mostPlayedModel);
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+            //return View("MostPlayed", mostPlayedModel);
         }
 
     }

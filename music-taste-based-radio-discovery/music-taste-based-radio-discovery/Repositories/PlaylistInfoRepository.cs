@@ -19,7 +19,17 @@ namespace music_taste_based_radio_discovery.Repositories
                 sqlConnection.Open();
 
                 IEnumerable<PlaylistTrack> tracks =
-                    sqlConnection.Query<PlaylistTrack> ("SELECT * FROM PlaylistInfo WHERE Performer = @artistName", new {artistName})
+                    sqlConnection.Query<PlaylistTrack> (
+                        "SELECT p.ChannelId, " +
+                        "p.StartTime, " +
+                        "p.Title, " +
+                        "p.Performer, " +
+                        "p.EpisodeId, " +
+                        "e.UnitID " +
+                        "FROM PlaylistInfo AS p " +
+                        "INNER JOIN Episode AS e " +
+                        "ON p.EpisodeId = e.Id " +
+                        "WHERE Performer = @artistName", new {artistName})
                         .ToList();
 
                 sqlConnection.Close();

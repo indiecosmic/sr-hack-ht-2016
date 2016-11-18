@@ -4,23 +4,19 @@
     @foreach (var program in Model)
     {
         <div class="column" data-programId="@program.Id">
-            <div class="most-played-image_container" style="position: relative">
-                @if (!program.ImageUrl.IsEmpty())
-                {
-                    <img src="@program.ImageUrl" class="thumbnail" alt=""/>
-                }
-                else
-                {
-                    <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
+            @if (!program.ImageUrl.IsEmpty())
+            {
+                <img src="@program.ImageUrl" class="thumbnail" alt=""/>
+            }
+            else
+            {
+                <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
+            }
 
-                }
-                <div style="position: absolute; bottom: 10px; right: 10px;">
-                    <h2 > 80%</h2>
-                </div>
-            </div>
-            <h4 class="thumbnail__program-name">
-                <a href="@program.Url">@program.Name</a>
+            <h4 class="header-item">
+                <a href="@program.Url" target="_blank">@program.Name</a>
             </h4>
+
             <p class="thumbnail__program-description">
                 @program.Description
             </p>

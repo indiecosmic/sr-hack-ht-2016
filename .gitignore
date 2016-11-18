@@ -252,3 +252,6 @@ paket-files/
 *.sln.iml
 
 music-taste-based-radio-discovery/music-taste-based-radio-discovery/Local.config
+
+**/Content/css/*
+**/Content/js/*

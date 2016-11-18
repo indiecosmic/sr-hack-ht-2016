@@ -20,11 +20,13 @@ namespace music_taste_based_radio_discovery
 
         public async Task<List<ChannelModel>> GetChannels(string artist)
         {
-            var results = await _playlistRepository.GetTracksByArtistName(artist);
             var list = new List<ChannelModel>();
-            foreach (var result in results)
+            var results = await _playlistRepository.GetTracksByArtistName(artist);
+            var channelGroups = results.GroupBy(r => r.ChannelId);
+
+            foreach (var result in channelGroups)
             {
-                var channel = await GetChannel(result.ChannelId);
+                var channel = await GetChannel(result.Key);
                 list.Add(channel);
             }
 

@@ -20,19 +20,62 @@ namespace music_taste_based_radio_discovery
             _playlistRepository = new PlaylistInfoRepository();
         }
 
-        public async Task<List<ChannelModel>> GetChannels(string artist)
+        public async Task<SummaryModel> CreateSummary(string artist)
+        {
+            var results = await _playlistRepository.GetTracksByArtistName(artist);
+            var model = new SummaryModel();
+
+            var channelGroups = results.GroupBy(r => r.ChannelId);
+            model.Channels = await GetChannels(channelGroups.Select(cg => cg.Key));
+
+            var unitGroups = results.GroupBy(r => r.UnitId);
+            model.Programs = await GetPrograms(unitGroups.Select(cg => cg.Key));
+
+            return model;
+        }
+
+        public async Task<List<ChannelModel>> GetChannels(IEnumerable<int> channelIds)
         {
             var list = new List<ChannelModel>();
-            var results = await _playlistRepository.GetTracksByArtistName(artist);
-            var channelGroups = results.GroupBy(r => r.ChannelId);
-
-            foreach (var result in channelGroups)
+            foreach (var channelId in channelIds)
             {
-                var channel = await GetChannel(result.Key);
+                var channel = await GetChannel(channelId);
                 list.Add(channel);
             }
 
             return list;
+        }
+
+        public async Task<List<ProgramModel>> GetPrograms(IEnumerable<int> unitIds)
+        {
+            var list = new List<ProgramModel>();
+            foreach (var unitId in unitIds)
+            {
+                if (unitId == 0) continue;
+                var program = await GetProgram(unitId);
+                if (program != null)
+                    list.Add(program);
+            }
+
+            return list;
+        }
+
+        public async Task<ProgramModel> GetProgram(int id)
+        {
+            var json =
+        await HttpHelper.Get($"http://api.sr.se/api/v2/programs/{id}?format=json");
+            if (json == "404 Not Found")
+                return null;
+
+            dynamic data = Json.Decode(json);
+            return new ProgramModel
+            {
+                Id = data.program.id,
+                Name = data.program.name,
+                Description = data.program.description,
+                ImageUrl = data.program.programimage,
+                Url = data.program.programurl
+            };
         }
 
         public async Task<ChannelModel> GetChannel(int id)

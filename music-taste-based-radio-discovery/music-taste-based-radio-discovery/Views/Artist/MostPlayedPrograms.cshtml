@@ -1,25 +1,33 @@
 ﻿@model IEnumerable<music_taste_based_radio_discovery.Models.ProgramModel>
 
-<div class="row small-up-1 medium-up-2 large-up-4">
-    @foreach (var program in Model)
-    {
-        <div class="column" data-programId="@program.Id">
-            @if (!program.ImageUrl.IsEmpty())
-            {
-                <img src="@program.ImageUrl" class="thumbnail" alt=""/>
-            }
-            else
-            {
-                <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
-            }
+@if (Model.Any())
+{
+    <div class="row small-up-1 medium-up-2 large-up-4">
+        @foreach (var program in Model)
+        {
+            <div class="column" data-programId="@program.Id">
+                @if (!program.ImageUrl.IsEmpty())
+                {
+                    <img src="@program.ImageUrl" class="thumbnail" alt=""/>
+                }
+                else
+                {
+                    <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
+                }
 
-            <h4 class="header-item">
-                <a href="@program.Url" target="_blank">@program.Name</a>
-            </h4>
+                <h4 class="header-item">
+                    <a href="@program.Url" target="_blank">@program.Name</a>
+                </h4>
 
-            <p class="thumbnail__program-description">
-                @program.Description
-            </p>
-        </div>
-    }
-</div>
+                <p class="thumbnail__program-description">
+                    @program.Description
+                </p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h5>Oops..</h5>
+    <p>Vi kunde inte hitta några program baserade på dina populära artister från Spotify.</p>
+}

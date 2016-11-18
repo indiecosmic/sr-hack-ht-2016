@@ -8,7 +8,9 @@
             <div class="column" data-programId="@program.Id">
                 @if (!program.ImageUrl.IsEmpty())
                 {
-                    <img src="@program.ImageUrl" class="thumbnail" alt=""/>
+                    <a href="@program.Url" target="_blank">
+                        <img src="@program.ImageUrl" class="thumbnail" alt="" />
+                    </a>
                 }
                 else
                 {

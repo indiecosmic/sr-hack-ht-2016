@@ -4,7 +4,8 @@
     var paths = {
         scripts: {
             src: [
-                "Scripts/foundation/foundation.core.js",
+                "Scripts/jquery-3.1.1.js",
+                "Scripts/foundation.js",
                 "Scripts/app.js"
             ],
             dest: "Content/js/"
@@ -35,7 +36,6 @@
 
     var gulp = require("gulp"),
         autoprefixer = require("gulp-autoprefixer"),
-        babel = require("gulp-babel"),
         concat = require("gulp-concat"),
         rename = require("gulp-rename"),
         sass = require("gulp-sass"),
@@ -43,7 +43,6 @@
 
     function scripts() {
         return gulp.src(paths.scripts.src)
-            .pipe(babel())
             // expanded output
             .pipe(concat("app.js"))
             .pipe(gulp.dest(paths.scripts.dest))

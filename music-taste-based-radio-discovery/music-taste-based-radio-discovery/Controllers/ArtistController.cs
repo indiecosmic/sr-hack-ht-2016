@@ -25,15 +25,11 @@ namespace music_taste_based_radio_discovery.Controllers
             if (token == null)
                 return RedirectToAction("Index", "Home");
 
-             var result = await SpotifyWebAPI.User.GetTopArtists(token);
+            var result = await SpotifyWebAPI.User.GetTopArtists(token);
             var firstArtist = result.Items.First();
-            var channels = await _statisticsService.GetChannels(firstArtist.Name);
+            var model = await _statisticsService.CreateSummary(firstArtist.Name);
+            model.Artists = result.Items;
 
-            var model = new SummaryModel
-            {
-                Artists = result.Items,
-                Channels = channels
-            };
 
             return View("MostPlayed", model);
         }

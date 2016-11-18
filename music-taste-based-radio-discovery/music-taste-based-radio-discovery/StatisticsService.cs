@@ -88,7 +88,8 @@ namespace music_taste_based_radio_discovery
                 Id = data.channel.id,
                 Color = data.channel.color,
                 Image = data.channel.image,
-                Name = data.channel.name
+                Name = data.channel.name,
+                Url = data.channel.siteurl
             };
         }
     }

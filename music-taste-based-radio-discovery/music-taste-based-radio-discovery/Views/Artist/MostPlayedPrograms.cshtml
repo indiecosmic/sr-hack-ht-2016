@@ -18,9 +18,9 @@
                     <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
                 }
 
-                <h4 class="header-item">
+                <h5 class="header-item">
                     <a href="@program.Url" class="thumbnail__artist-name" target="_blank">@program.Name</a>
-                </h4>
+                </h5>
 
                 <p class="result-item_information" >
                     <span class="artist-" style="font-weight: bold;">Spelade artister: </span>
@@ -35,11 +35,11 @@
     <div class="row small-up-2 medium-up-4 large-up-6">
         @foreach (var program in Model.Skip(3))
         {
-            <div class="column" data-programId="@program.Id">
+            <div class="column program-contianer" data-programId="@program.Id">
                 @if (!program.ImageUrl.IsEmpty())
                 {
                     <a href="@program.Url" target="_blank">
-                        <img src="@program.ImageUrl" class="thumbnail" alt=""/>
+                        <img src="@program.ImageUrl" class="thumbnail program-image" alt=""/>
                     </a>
                 }
                 else
@@ -47,9 +47,9 @@
                     <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt="" />
                 }
 
-                <h4 class="header-item">
+                <h6 class="header-item">
                     <a href="@program.Url" class="thumbnail__artist-name" target="_blank">@program.Name</a>
-                </h4>
+                </h6>
             </div>
         }
     </div>

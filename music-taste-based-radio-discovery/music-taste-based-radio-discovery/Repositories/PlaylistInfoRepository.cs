@@ -16,7 +16,7 @@ namespace music_taste_based_radio_discovery.Repositories
 
                 var tracks =
                     await sqlConnection.QueryAsync<PlaylistTrack>(
-                        "SELECT p.ChannelId, " +
+                        "SELECT top 1000 p.ChannelId, " +
                         "p.StartTime, " +
                         "p.Title, " +
                         "p.Performer, " +

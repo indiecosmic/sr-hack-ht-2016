@@ -11,7 +11,7 @@ namespace SpotifyWebAPI
     /// <summary>
     /// A helper class used as an interface for common HttpClient commands
     /// </summary>
-    internal class HttpHelper
+    public class HttpHelper
     {
         /// <summary>
         /// Downloads a url and reads its contents as a string using the get method

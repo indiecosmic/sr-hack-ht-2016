@@ -294,6 +294,7 @@
     <Content Include="Styles\foundation\_global.scss" />
     <Content Include="Views\Artist\MostPlayed.cshtml" />
     <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Artist\MostPlayedPrograms.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

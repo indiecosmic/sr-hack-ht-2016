@@ -9,5 +9,6 @@ namespace music_taste_based_radio_discovery.Models
     {
         public IEnumerable<SpotifyWebAPI.Artist> Artists { get; set; }
         public IEnumerable<ChannelModel> Channels { get; set; }
+        public List<ProgramModel> ProgramIds { get; set; }
     }
 }

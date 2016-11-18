@@ -63,11 +63,13 @@
                 <div class="column">
                     @if (artist.Images.Count > 0)
                     {
-                        <img src="@artist.Images.First().Url" class="thumbnail" alt=""/>
+                        <a href="@Url.Action("Details", "Artist", new {id = artist.Id})">
+                            <img src="@artist.Images.First().Url" class="thumbnail" alt=""/>
+                        </a>
                     }
 
                     <h4>
-                        @Html.ActionLink(artist.Name, "Details", null, new {@class = "thumbnail__artist-name", id = artist.Id})
+                        @Html.ActionLink(artist.Name, "Details", null, new { @class = "thumbnail__artist-name", id = artist.Id })
                     </h4>
 
                     <p class="thumbnail__artist-genres">

@@ -8,7 +8,12 @@ namespace music_taste_based_radio_discovery.Models
     public class SummaryModel
     {
         public IEnumerable<SpotifyWebAPI.Artist> Artists { get; set; }
-        public IEnumerable<ChannelModel> Channels { get; set; }
-        public IEnumerable<ProgramModel> Programs { get; set; }
+        public List<ChannelModel> Channels { get; set; }
+        public List<ProgramModel> Programs { get; set; }
+
+        public SummaryModel()
+        {
+            
+        }
     }
 }

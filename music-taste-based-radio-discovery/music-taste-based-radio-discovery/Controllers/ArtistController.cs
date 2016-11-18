@@ -26,10 +26,9 @@ namespace music_taste_based_radio_discovery.Controllers
                 return RedirectToAction("Index", "Home");
 
             var result = await SpotifyWebAPI.User.GetTopArtists(token);
-            var firstArtist = result.Items.First();
-            var model = await _statisticsService.CreateSummary(firstArtist.Name);
-            model.Artists = result.Items;
 
+            var model = await _statisticsService.CreateSummary(result.Items.Select(r => r.Name));
+            model.Artists = result.Items;
 
             return View("MostPlayed", model);
         }

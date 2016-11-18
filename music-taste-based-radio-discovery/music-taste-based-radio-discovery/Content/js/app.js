@@ -19353,9 +19353,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     log("init foundation..");
     $(document).foundation();
     log("OK");
-
-    var $elem = $("#what");
-    var elem = new foundation.Magellan($elem, {});
-
-    log(elem);
 })(jQuery, Foundation);

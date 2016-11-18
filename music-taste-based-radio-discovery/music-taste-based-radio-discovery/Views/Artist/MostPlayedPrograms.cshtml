@@ -22,9 +22,11 @@
                     <a href="@program.Url" class="thumbnail__artist-name" target="_blank">@program.Name</a>
                 </h4>
 
-                <p class="thumbnail__program-description">
-                    @program.Description
+                <p class="result-item_information" >
+                    <span class="artist-" style="font-weight: bold;">Spelade artister: </span>
+                    <span>Spelar @string.Join(", ", program.Artists)</span>
                 </p>
+
             </div>
         }
     </div>
@@ -42,16 +44,12 @@
                 }
                 else
                 {
-                    <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt=""/>
+                    <img src="http://sverigesradio.se/sida/images/1120/c628157b-f5f5-4c7c-b26e-451c31b4f296.jpg?preset=api-default-square" class="thumbnail" alt="" />
                 }
 
                 <h4 class="header-item">
                     <a href="@program.Url" class="thumbnail__artist-name" target="_blank">@program.Name</a>
                 </h4>
-
-                <p class="thumbnail__program-description">
-                    @program.Description
-                </p>
             </div>
         }
     </div>

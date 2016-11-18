@@ -31,15 +31,46 @@ namespace music_taste_based_radio_discovery
 
                 if (model.Channels == null)
                     model.Channels = new List<ChannelModel>();
-                model.Channels.AddRange(channels);
+                foreach (var channel in channels)
+                {
+                    var x = model.Channels.FirstOrDefault(c => c.Id == channel.Id);
+                    if (x != null) {
+                        x.HitCount++;
+                        if (x.Artists == null) x.Artists = new List<string>();
+                        x.Artists.Add(artist);
+                    }
+                    else
+                    {
+                        if (channel.Artists == null) channel.Artists = new List<string>();
+                        channel.Artists.Add(artist);
+                        model.Channels.Add(channel);
+                    }
+                }
 
                 var unitGroups = results.GroupBy(r => r.UnitId);
                 var programs = await GetPrograms(unitGroups.Select(cg => cg.Key));
                 if (model.Programs == null)
                     model.Programs = new List<ProgramModel>();
-                model.Programs.AddRange(programs);
+                foreach (var program in programs)
+                {
+                    var x = model.Programs.FirstOrDefault(p => p.Id == program.Id);
+                    if (x != null)
+                    {
+                        x.HitCount++;
+                        if (x.Artists == null) x.Artists = new List<string>();
+                        x.Artists.Add(artist);
+                    }
+                    else {
+                        if (program.Artists == null) program.Artists = new List<string>();
+                        program.Artists.Add(artist);
+                        model.Programs.Add(program);
+                    }
+                }
 
             }
+            model.Channels = model.Channels.OrderByDescending(c => c.HitCount).ToList();
+            model.Programs = model.Programs.OrderByDescending(p => p.HitCount).ToList();
+
             return model;
         }
 

@@ -1,8 +1,34 @@
 ﻿@model IEnumerable<SpotifyWebAPI.Artist>
 
+<div class="row" data-sticky-container>
+    <div id="example" class="sticky magellan-nav" data-sticky data-margin-top="0" style="width: 100%;" data-margin-bottom="0" data-top-anchor="channels" data-btm-anchor="bottom:bottom">
+        <div class="column">
+            <nav id="what" data-magellan>
+                <ul class="horizontal menu expanded">
+                    <li><a href="#channels">Kanaler</a></li>
+                    <li><a href="#programs">Program</a></li>
+                    <li><a href="#spotify">Spotify</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h2 id="channels">Kanaler</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h2 id="programs">Program</h2>
+    </div>
+</div>
+
 <div class="row">
     <div class="column large-9">
-        <h2>Dina mest popuplära artister på Spotify</h2>
+        <h2 id="spotify">Dina mest popuplära artister på Spotify</h2>
 
         <div class="row small-up-1 medium-up-2 large-up-4">
             @foreach (var artist in Model)
@@ -27,12 +53,14 @@
     </div>
 
     <div class="large-3 columns" data-sticky-container>
-        <nav class="columns sticky" data-sticky data-anchor="exampleId" data-sticky-on="large">
+        <nav class="columns sticky" data-sticky data-anchor="example" data-sticky-on="large">
             <ul class="vertical menu" data-magellan>
-                <li><a href="#first">First Arrival</a></li>
-                <li><a href="#second">Second Arrival</a></li>
-                <li><a href="#third">Third Arrival</a></li>
+                <li><a href="#channels">Kanaler</a></li>
+                <li><a href="#programs">Program</a></li>
+                <li><a href="#spotify">Spotify</a></li>
             </ul>
         </nav>
     </div>
 </div>
+
+<div id="bottom"></div>

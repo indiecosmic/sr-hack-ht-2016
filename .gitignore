@@ -253,4 +253,5 @@ paket-files/
 
 music-taste-based-radio-discovery/music-taste-based-radio-discovery/Local.config
 
-**/*.css
+**/Content/css/*
+**/Content/js/*

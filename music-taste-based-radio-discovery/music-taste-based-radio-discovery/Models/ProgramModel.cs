@@ -12,5 +12,6 @@ namespace music_taste_based_radio_discovery.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string Url { get; set; }
+        public int HitCount { get; set; }
     }
 }

@@ -12,18 +12,27 @@ namespace music_taste_based_radio_discovery.Controllers
 {
     public class ArtistController : Controller
     {
+        private StatisticsService _statisticsService;
+        public ArtistController()
+        {
+            _statisticsService = new StatisticsService();
+        }
+
         // GET: Artist
         public async Task<ActionResult> Index()
         {
             var token = Session["token"] as AuthenticationToken;
             if (token == null)
                 return RedirectToAction("Index", "Home");
-            
-            var result = await SpotifyWebAPI.User.GetTopArtists(token);
+
+             var result = await SpotifyWebAPI.User.GetTopArtists(token);
+            var firstArtist = result.Items.First();
+            var channels = await _statisticsService.GetChannels(firstArtist.Name);
 
             var model = new SummaryModel
             {
-                Artists = result.Items
+                Artists = result.Items,
+                Channels = channels
             };
 
             return View("MostPlayed", model);

@@ -1,4 +1,4 @@
-﻿@model List<music_taste_based_radio_discovery.Models.ProgramModel>
+﻿@model IEnumerable<music_taste_based_radio_discovery.Models.ProgramModel>
 
 <div class="row">
     <div class="column large-9">
@@ -19,7 +19,7 @@
                     }
 
                     <h4 class="thumbnail__program-name">
-                        <a href="@program.Url">Ring P1</a>
+                        <a href="@program.Url">@program.Name</a>
                     </h4>
                     <p class="thumbnail__program-description">
                         @program.Description

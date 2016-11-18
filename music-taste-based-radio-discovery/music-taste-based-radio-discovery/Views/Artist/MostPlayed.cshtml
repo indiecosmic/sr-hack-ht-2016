@@ -25,6 +25,10 @@
                                 </h2>
                             }
                         }
+                        else
+                        {
+                            <h2 class="header-item">@channel.Name</h2>
+                        }
                     </div>
                 }
             </div>
@@ -44,7 +48,7 @@
 </div>
 
 <div class="row">
-    <div class="column large-9">
+    <div class="column small-12">
         @Html.Partial("MostPlayedPrograms", Model.Programs)
     </div>
 </div>

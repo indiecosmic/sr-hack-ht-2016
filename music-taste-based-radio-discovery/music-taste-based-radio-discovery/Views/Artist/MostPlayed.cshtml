@@ -18,7 +18,10 @@
                                 <a href="@channel.Url" target="_blank">
                                     <img src="@channel.Image" class="thumbnail" alt=""/>
                                 </a>
-                                <p>Spelar @string.Join(", ", channel.Artists)</p>
+                                <p class="result-item_information">
+                                    <span class="artist-" style="font-weight: bold;">Spelade artister: </span>
+                                    <span>@string.Join(", ", channel.Artists)</span>
+                                </p>
                             }
                             else
                             {

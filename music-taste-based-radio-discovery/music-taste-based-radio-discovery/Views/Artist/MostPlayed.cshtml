@@ -6,8 +6,37 @@
 
         @if (Model.Channels.Any())
         {
-            <div class="row small-up-1 medium-up-2 large-up-4">
-                @foreach (var channel in Model.Channels)
+            <!-- top 3 channels -->
+            <div class="row small-up-1 medium-up-2 large-up-3">
+                @foreach (var channel in Model.Channels.Take(3))
+                {
+                    <div class="column">
+                        @if (!string.IsNullOrWhiteSpace(channel.Url))
+                        {
+                            if (!string.IsNullOrWhiteSpace(channel.Image))
+                            {
+                                <a href="@channel.Url" target="_blank">
+                                    <img src="@channel.Image" class="thumbnail" alt=""/>
+                                </a>
+                            }
+                            else
+                            {
+                                <h2 class="header-item">
+                                    <a class="thumbnail__artist-name" href="@channel.Url" target="_blank">@channel.Name</a>
+                                </h2>
+                            }
+                        }
+                        else
+                        {
+                            <h2 class="header-item">@channel.Name</h2>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- rest of the recommended channels -->
+            <div class="row small-up-2 medium-up-4 large-up-6">
+                @foreach (var channel in Model.Channels.Skip(3))
                 {
                     <div class="column">
                         @if (!string.IsNullOrWhiteSpace(channel.Url))
@@ -52,8 +81,10 @@
     <div class="columns small-12">
         <h2 id="spotify" class="header-item">Dina mest popuplära artister på Spotify</h2>
 
-        <div class="row small-up-1 medium-up-2 large-up-4">
-            @foreach (var artist in Model.Artists)
+
+        <!-- top 3 artists -->
+        <div class="row small-up-1 medium-up-2 large-up-3">
+            @foreach (var artist in Model.Artists.Take(3))
             {
                 <div class="column">
                     @if (artist.Images.Count > 0)
@@ -64,7 +95,31 @@
                     }
 
                     <h4>
-                        @Html.ActionLink(artist.Name, "Details", null, new { @class = "thumbnail__artist-name", id = artist.Id })
+                        @Html.ActionLink(artist.Name, "Details", null, new {@class = "thumbnail__artist-name", id = artist.Id})
+                    </h4>
+
+                    <p class="thumbnail__artist-genres">
+                        @{ var str = string.Join(", ", artist.Genres); }
+                        @str
+                    </p>
+                </div>
+            }
+        </div>
+
+        <!-- rest of the recommended channels -->
+        <div class="row small-up-2 medium-up-4 large-up-6">
+            @foreach (var artist in Model.Artists.Skip(3))
+            {
+                <div class="column">
+                    @if (artist.Images.Count > 0)
+                    {
+                        <a href="@Url.Action("Details", "Artist", new {id = artist.Id})">
+                            <img src="@artist.Images.First().Url" class="thumbnail" alt=""/>
+                        </a>
+                    }
+
+                    <h4>
+                        @Html.ActionLink(artist.Name, "Details", null, new {@class = "thumbnail__artist-name", id = artist.Id})
                     </h4>
 
                     <p class="thumbnail__artist-genres">

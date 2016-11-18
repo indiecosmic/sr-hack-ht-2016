@@ -3,6 +3,37 @@
 <div class="row">
     <div class="columns small-12">
         <h2 id="channels" class="header-item">Rekommenderade kanaler</h2>
+
+        @if (Model.Channels.Any())
+        {
+            <div class="row small-up-1 medium-up-2 large-up-4">
+                @foreach (var channel in Model.Channels)
+                {
+                    <div class="column">
+                        @if (!string.IsNullOrWhiteSpace(channel.Url))
+                        {
+                            if (!string.IsNullOrWhiteSpace(channel.Image))
+                            {
+                                <a href="@channel.Url">
+                                    <img src="@channel.Image" class="thumbnail" alt=""/>
+                                </a>
+                            }
+                            else
+                            {
+                                <h2 class="header-item">
+                                    <a href="@channel.Url">@channel.Name</a>
+                                </h2>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h5>Oops..</h5>
+            <p>Vi kunde inte hitta några kanaler baserade på dina populära artister från Spotify.</p>
+        }
     </div>
 </div>
 
@@ -26,7 +57,7 @@
                     }
 
                     <h4>
-                        @Html.ActionLink(artist.Name, "Details", null, new { @class = "thumbnail__artist-name", id = artist.Id })
+                        @Html.ActionLink(artist.Name, "Details", null, new {@class = "thumbnail__artist-name", id = artist.Id})
                     </h4>
 
                     <p class="thumbnail__artist-genres">

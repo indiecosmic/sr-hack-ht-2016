@@ -10,7 +10,9 @@
     <nav class="top-bar">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li class="menu-text"><a href="/">MTBRD</a></li>
+                <li>
+                    @Html.ActionLink("MTBRD", "Index", "Home", new { area = "" }, null)
+                </li>
             </ul>
         </div>
     </nav>

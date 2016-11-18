@@ -4880,6 +4880,22 @@ body {
   color: #fff;
 }
 
+.body-content {
+  padding-top: 20px;
+}
+
+.index-wrapper {
+  text-align: center;
+}
+
+.login-button {
+  background: #1ed760;
+}
+
+.login-button:hover, .login-button:active, .login-button:focus, .login-button:visited {
+  background: #18aa4c;
+}
+
 .top-bar {
   background-color: #FFFFFF;
 }

@@ -13,5 +13,6 @@ namespace music_taste_based_radio_discovery.Models
         public string Name { get; set; }
         public string Url { get; set; }
         public int HitCount { get; set; }
+        public List<string> Artists { get; set; }
     }
 }

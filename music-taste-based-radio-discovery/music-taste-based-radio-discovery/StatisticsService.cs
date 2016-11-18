@@ -34,10 +34,15 @@ namespace music_taste_based_radio_discovery
                 foreach (var channel in channels)
                 {
                     var x = model.Channels.FirstOrDefault(c => c.Id == channel.Id);
-                    if (x != null)
+                    if (x != null) {
                         x.HitCount++;
+                        if (x.Artists == null) x.Artists = new List<string>();
+                        x.Artists.Add(artist);
+                    }
                     else
                     {
+                        if (channel.Artists == null) channel.Artists = new List<string>();
+                        channel.Artists.Add(artist);
                         model.Channels.Add(channel);
                     }
                 }
@@ -50,9 +55,16 @@ namespace music_taste_based_radio_discovery
                 {
                     var x = model.Programs.FirstOrDefault(p => p.Id == program.Id);
                     if (x != null)
+                    {
                         x.HitCount++;
-                    else
+                        if (x.Artists == null) x.Artists = new List<string>();
+                        x.Artists.Add(artist);
+                    }
+                    else {
+                        if (program.Artists == null) program.Artists = new List<string>();
+                        program.Artists.Add(artist);
                         model.Programs.Add(program);
+                    }
                 }
 
             }

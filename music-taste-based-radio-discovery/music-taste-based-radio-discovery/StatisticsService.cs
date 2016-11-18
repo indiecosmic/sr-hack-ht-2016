@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using music_taste_based_radio_discovery.Models;
 using music_taste_based_radio_discovery.Repositories;
+using Newtonsoft.Json;
 using SpotifyWebAPI;
 using SpotifyWebAPI.SpotifyModel;
 
@@ -37,13 +39,14 @@ namespace music_taste_based_radio_discovery
         {
             var json =
                     await HttpHelper.Get($"http://api.sr.se/api/v2/channels/{id}?format=json");
-            //var obj = JsonConvert.DeserializeObject<artistsearchresult>(json, new JsonSerializerSettings
-            //{
-            //    TypeNameHandling = TypeNameHandling.All,
-            //    TypeNameAssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
-            //});
-            var channel = new ChannelModel { };
-            return channel;
+            dynamic data = Json.Decode(json);
+            return new ChannelModel
+            {
+                Id = data.channel.id,
+                Color = data.channel.color,
+                Image = data.channel.image,
+                Name = data.channel.name
+            };
         }
     }
 }

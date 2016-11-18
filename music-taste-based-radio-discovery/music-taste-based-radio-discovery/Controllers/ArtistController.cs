@@ -21,7 +21,12 @@ namespace music_taste_based_radio_discovery.Controllers
             
             var result = await SpotifyWebAPI.User.GetTopArtists(token);
 
-            return View("MostPlayed", result.Items);
+            var model = new SummaryModel
+            {
+                Artists = result.Items
+            };
+
+            return View("MostPlayed", model);
         }
 
         public async Task<ActionResult> Details(string id)

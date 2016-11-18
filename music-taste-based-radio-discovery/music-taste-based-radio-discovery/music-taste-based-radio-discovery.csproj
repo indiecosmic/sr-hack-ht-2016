@@ -197,6 +197,7 @@
     <Compile Include="Models\ArtistDetails.cs" />
     <Compile Include="Models\PlaylistTrack.cs" />
     <Compile Include="Models\Callback\MostPlayedModel.cs" />
+    <Compile Include="Models\SummaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PlaylistInfoRepository.cs" />
     <Compile Include="Settings.cs" />
